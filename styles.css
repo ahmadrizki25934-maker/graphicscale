@@ -1,0 +1,115 @@
+/* ===== CYBERPUNK LABS CONFIGURATION ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #020205;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 128, 0.05) 0%, transparent 80%),
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100%, 100% 4px, 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff80;
+    overflow: hidden;
+}
+
+.cyber-matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(5, 5, 10, 0.85);
+    border: 1px solid rgba(0, 255, 128, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 255, 128, 0.05);
+}
+
+.hud-header, .hud-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(0, 255, 128, 0.5);
+    padding: 0 5px;
+}
+
+.blink-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00ff80;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: blink 1s infinite;
+}
+
+/* Bingkai Utama Kamera & Kanvas Tracking */
+.camera-container {
+    position: relative;
+    width: 900px;
+    aspect-ratio: 16/9;
+    border: 2px solid rgba(0, 255, 128, 0.3);
+    box-shadow: inset 0 0 20px rgba(0, 255, 128, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    /* Mirror satu pintu pada level container induk */
+    transform: scaleX(-1); 
+}
+
+/* Video Kamera Asli di Lapisan Bawah */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Kanvas HUD Menimpa Sempurna di Lapisan Atas */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    pointer-events: none;
+    z-index: 2;
+}
+
+.scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+    background-size: 100% 4px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.frame-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #00ff80;
+    z-index: 4;
+    pointer-events: none;
+}
+.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
