@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cyber Vision - Hand Tracking HUD</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="cyber-matrix">
+        <div class="hud-header">
+            <div class="hud-title">SYSTEM: AI_VISION_MALFUNCTION_BYPASS</div>
+            <div class="hud-status"><span class="blink-dot"></span>CORE_ONLINE</div>
+        </div>
+
+        <div class="camera-container">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="canvas"></canvas>
+            
+            <div class="frame-corner tl"></div>
+            <div class="frame-corner tr"></div>
+            <div class="frame-corner bl"></div>
+            <div class="frame-corner br"></div>
+            <div class="scanlines"></div>
+        </div>
+
+        <div class="hud-footer">
+            <div>TARGET_LOCK: ACTIVE</div>
+            <div id="fps-counter">SYS_FPS: --</div>
+            <div>MODE: MULTI_HAND_POLYGON_MASK</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
